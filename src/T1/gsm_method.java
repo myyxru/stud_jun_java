@@ -9,14 +9,15 @@ public class gsm_method {
     double rashod_300=11.5;
     double rashod_400=20;
 
-    public  main(String[] args) {
+    public static void total_gsm(String[] gsm_arr) {
+        String[] arr = gsm_arr;
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
 
-        public double total_gsm (String[]arr){
-            for (int i = 0; i < arr.length; i++) {
-                System.out.println(arr[i]);
-
-            }
-            return 0;
         }
+
     }
-}
+
+
+    }
+
