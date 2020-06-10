@@ -77,13 +77,13 @@ public class gsm_method {
 
         System.out.printf("Общий расход:"+"%.2f",total);
         System.out.println();
-        System.out.printf("Расход по классу 100:  "+"%.2f",total100);
+        System.out.printf("Расход по классу C100:  "+"%.2f",total100);
         System.out.println();
-        System.out.printf("Расход по классу 200:  "+"%.2f",total200);
+        System.out.printf("Расход по классу C200:  "+"%.2f",total200);
         System.out.println();
-        System.out.printf("Расход по классу 300:  "+"%.2f",total300);
+        System.out.printf("Расход по классу C300:  "+"%.2f",total300);
         System.out.println();
-        System.out.printf("Расход по классу 400:  "+"%.2f",total400);
+        System.out.printf("Расход по классу C400:  "+"%.2f",total400);
         System.out.println();
         if (max<total100) {
             max=total100;
@@ -101,7 +101,7 @@ public class gsm_method {
             max=total400;
             typemax=400;
         }
-        System.out.printf("Максимальный расход у типа "+typemax+" расход составил: "+"%.2f",max);
+        System.out.printf("Максимальный расход у типа C"+typemax+" расход составил: "+"%.2f",max);
         System.out.println();
         min=total100;
         typemin=100;
@@ -117,11 +117,9 @@ public class gsm_method {
             min=total400;
             typemin=400;
         }
-        System.out.printf("Минимальный расход у типа "+typemin+" расход составил: "+"%.2f",min);
+        System.out.printf("Минимальный расход у типа C"+typemin+" расход составил: "+"%.2f",min);
         System.out.println();
     }
-
-
 }
 
 
