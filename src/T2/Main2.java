@@ -12,11 +12,11 @@ public class Main2 {
         return arr;
     }
 
-    public static void main(String[] args) {
-        Main2 arr2 = new Main2();
-        for (int i:arr2) {
-            System.out.println(arr2[i]);
-        }
+//    public static void main(String[] args) {
+//        Main2 arr2 = new Main2();
+//        for (int i:arr2) {
+//            System.out.println(arr2[i]);
+//        }
 
 
 
@@ -24,5 +24,5 @@ public class Main2 {
        // }
 
     }
-}
+
 

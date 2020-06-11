@@ -130,11 +130,12 @@ public class Gsmmethod {
             } else {
                 param[i] = 0;
             }
+            System.out.println(param[i]);
         }
         return param;
     }
 
-    public void sort(int[] codeauto, String[] gsmArr, int[] probeg,int code) {
+    public void sortprobeg(int[] codeauto, String[] gsmArr, int[] probeg,int code) {
         int lensort=0; //длина для создания массива с  одним кодом авто
         for (int i = 0; i < codeauto.length; i++) {
             if (codeauto[i] == code) {
@@ -154,6 +155,39 @@ public class Gsmmethod {
         for (int i = 0; i < forsort.length - 1; i++) {
             for (int k = forsort.length - 1; k > i; k--) {
                 if (probeg[numb[k - 1]] > probeg[numb[k]]) {
+                    String tempstr = gsmArr[numb[k - 1]]; //буфер для пузырька
+                    forsort[k - 1] = forsort[k];
+                    forsort[k] = tempstr;
+                }
+            }
+        }
+        for (int i = 0; i < forsort.length; i++) {
+            System.out.println(forsort[i]);
+
+        }
+        System.out.println();
+    }
+
+    public void sortparam(int[] codeauto, String[] gsmArr, int[] probeg,int code,int [] param) {
+        int lensort=0; //длина для создания массива с  одним кодом авто
+        for (int i = 0; i < codeauto.length; i++) {
+            if (codeauto[i] == code) {
+                lensort++;
+            }
+        }
+        String[] forsort = new String[lensort]; //массив для одного кода авто
+        int[] numb = new int[lensort];//массив для хранения номера значений авто с одинаковым кодом
+        int j = 0;
+        for (int i = 0; i < codeauto.length; i++) {
+            if (codeauto[i] == code) {
+                forsort[j] = gsmArr[i];
+                numb[j] = i;
+                j++;
+            }
+        }
+        for (int i = 0; i < forsort.length - 1; i++) {
+            for (int k = forsort.length -1; k > i; k--) {
+                if (param[numb[k - 1]] > param[numb[k]]) {
                     String tempstr = gsmArr[numb[k - 1]]; //буфер для пузырька
                     forsort[k - 1] = forsort[k];
                     forsort[k] = tempstr;

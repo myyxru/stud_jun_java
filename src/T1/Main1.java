@@ -13,13 +13,14 @@ public class Main1 {
             "C100_1-300", "C200_1-100-750", "C300_1-32-15"};
    // gsm_method.total_gsm(gsm_arr);
    // int[] probeg = new int[15];
-        int code=400;
+        int code=200;
         Gsmmethod gsmmethod = new Gsmmethod();
 
         gsmmethod.total_gsm(gsmmethod.probeg(gsmArr),gsmmethod.codeauto(gsmArr));
         gsmmethod.gosnum(gsmArr);
         gsmmethod.param(gsmArr);
-        gsmmethod.sort(gsmmethod.codeauto(gsmArr),gsmArr,gsmmethod.probeg(gsmArr),code);
+        gsmmethod.sortprobeg(gsmmethod.codeauto(gsmArr),gsmArr,gsmmethod.probeg(gsmArr),code);
+        gsmmethod.sortparam(gsmmethod.codeauto(gsmArr),gsmArr,gsmmethod.probeg(gsmArr),code,gsmmethod.param(gsmArr));
     }
 
 }
