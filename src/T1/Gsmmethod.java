@@ -130,7 +130,6 @@ public class Gsmmethod {
             } else {
                 param[i] = 0;
             }
-            System.out.println(param[i]);
         }
         return param;
     }
@@ -143,21 +142,24 @@ public class Gsmmethod {
             }
         }
         String[] forsort = new String[lensort]; //массив для одного кода авто
-        int[] numb = new int[lensort];//массив для хранения номера значений авто с одинаковым кодом
+        int [] probegforsort = new int[lensort]; //массив для сортировки со значениями интового пробега для условия
         int j = 0;
         for (int i = 0; i < codeauto.length; i++) {
             if (codeauto[i] == code) {
                 forsort[j] = gsmArr[i];
-                numb[j] = i;
+                probegforsort[j] = probeg[i];
                 j++;
             }
         }
-        for (int i = 0; i < forsort.length - 1; i++) {
-            for (int k = forsort.length - 1; k > i; k--) {
-                if (probeg[numb[k - 1]] > probeg[numb[k]]) {
-                    String tempstr = gsmArr[numb[k - 1]]; //буфер для пузырька
-                    forsort[k - 1] = forsort[k];
-                    forsort[k] = tempstr;
+        for (int i = forsort.length - 1; i > 0 ; i--) {
+            for (int k = 0; k < i; k++) {
+                if ( probegforsort[k] > probegforsort[k + 1]) {
+                    int temprobeg = probegforsort[k]; //буфер для пузырька
+                    probegforsort[k] = probegforsort[k+1];
+                    probegforsort[k+1] = temprobeg;
+                    String tempstr = forsort[k]; //буфер для пузырька
+                    forsort[k] = forsort[k+1];
+                    forsort[k+1] = tempstr;
                 }
             }
         }
@@ -168,7 +170,7 @@ public class Gsmmethod {
         System.out.println();
     }
 
-    public void sortparam(int[] codeauto, String[] gsmArr, int[] probeg,int code,int [] param) {
+    public void sortparam(int[] codeauto, String[] gsmArr,  int[] probeg, int[] param,int code) {
         int lensort=0; //длина для создания массива с  одним кодом авто
         for (int i = 0; i < codeauto.length; i++) {
             if (codeauto[i] == code) {
@@ -176,27 +178,40 @@ public class Gsmmethod {
             }
         }
         String[] forsort = new String[lensort]; //массив для одного кода авто
-        int[] numb = new int[lensort];//массив для хранения номера значений авто с одинаковым кодом
+        int [] paramforsort = new int[lensort]; //массив для сортировки со значениями интового пробега для условия
         int j = 0;
         for (int i = 0; i < codeauto.length; i++) {
             if (codeauto[i] == code) {
                 forsort[j] = gsmArr[i];
-                numb[j] = i;
+                paramforsort[j] = param[i];
                 j++;
             }
         }
-        for (int i = 0; i < forsort.length - 1; i++) {
-            for (int k = forsort.length -1; k > i; k--) {
-                if (param[numb[k - 1]] > param[numb[k]]) {
-                    String tempstr = gsmArr[numb[k - 1]]; //буфер для пузырька
-                    forsort[k - 1] = forsort[k];
-                    forsort[k] = tempstr;
+        int hidesout=0;
+        for (int i = forsort.length - 1; i > 0 ; i--) {
+            if (paramforsort[i]==0){
+                sortprobeg(codeauto,gsmArr,probeg,code); // если параметр отсутствует делает сортировку по пробегу
+                break;}
+                else {
+            for (int k = 0; k < i; k++) {
+                hidesout++;
+                if ( paramforsort[k] > paramforsort[k + 1]) {
+                    int tempparam = paramforsort[k]; //буфер для пузырька
+                    paramforsort[k] = paramforsort[k + 1];
+                    paramforsort[k + 1] = tempparam;
+                    String tempstr = forsort[k]; //буфер для пузырька
+                    forsort[k] = forsort[k + 1];
+                    forsort[k + 1] = tempstr;
+                    }
                 }
             }
         }
-        for (int i = 0; i < forsort.length; i++) {
-            System.out.println(forsort[i]);
+        if (hidesout!=0){
+            for (int i = 0; i < forsort.length; i++) {
+                System.out.println(forsort[i]);
+             }
         }
+        System.out.println();
     }
 }
 
